@@ -19,11 +19,11 @@ public:
     T2 data;
     typename Graph<T1, T2>::point* point;
 
-    Line(T1 d, typename Graph<T1, T2>::point* p);
+    Line(T2 d, typename Graph<T1, T2>::point* p);
 };
 
 template<class T1, class T2>
-Line<T1, T2>::Line(T1 d, typename Graph<T1, T2>::point *p) {
+Line<T1, T2>::Line(T2 d, typename Graph<T1, T2>::point *p) {
     data = d;
     point = p;
 }

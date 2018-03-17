@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(include)
 
-add_executable(graph main.cpp include/Point.h include/Line.h include/Iterator.h include/Graph.h)
+add_executable(graph main.cpp include/Point.h include/Line.h include/Iterator.h include/Graph.h include/PointData.h)

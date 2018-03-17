@@ -33,24 +33,20 @@ public:
 
 template<class T1, class T2>
 Graph<T1, T2>::Graph() {
-    points.emplace_back(Graph<T1, T2>::point(50));
-    points.emplace_back(Graph<T1, T2>::point(49));
-    points.emplace_back(Graph<T1, T2>::point(44));
-    points.emplace_back(Graph<T1, T2>::point(43));
-    points.emplace_back(Graph<T1, T2>::point(45));
-    points.emplace_back(Graph<T1, T2>::point(40));
-    points.emplace_back(Graph<T1, T2>::point(40));
-    points.emplace_back(Graph<T1, T2>::point(35));
-    points.emplace_back(Graph<T1, T2>::point(3));
-    points.emplace_back(Graph<T1, T2>::point(4));
-    points.emplace_back(Graph<T1, T2>::point(6));
-    points.emplace_back(Graph<T1, T2>::point(8));
-    points.emplace_back(Graph<T1, T2>::point(9));
-    points.emplace_back(Graph<T1, T2>::point(10));
+    points.emplace_back(Graph<T1, T2>::point({0,0,0}));
+    points.emplace_back(Graph<T1, T2>::point({10,0,0}));
+    points.emplace_back(Graph<T1, T2>::point({19,0,0}));
+    points.emplace_back(Graph<T1, T2>::point({6,0,0}));
+    points.emplace_back(Graph<T1, T2>::point({7,0,0}));
+    points.emplace_back(Graph<T1, T2>::point({0,0,0}));
 
+    points[0].lines.emplace_back(Graph<T1, T2>::line(5, &points[1]));
     points[0].lines.emplace_back(Graph<T1, T2>::line(2, &points[2]));
-    points[2].lines.emplace_back(Graph<T1, T2>::line(5, &points[4]));
-    points[2].lines.emplace_back(Graph<T1, T2>::line(15, &points[5]));
+    points[1].lines.emplace_back(Graph<T1, T2>::line(10, &points[5]));
+    points[2].lines.emplace_back(Graph<T1, T2>::line(3, &points[3]));
+    points[2].lines.emplace_back(Graph<T1, T2>::line(2, &points[4]));
+    points[3].lines.emplace_back(Graph<T1, T2>::line(4, &points[5]));
+    points[4].lines.emplace_back(Graph<T1, T2>::line(9, &points[5]));
 }
 
 template<class T1, class T2>

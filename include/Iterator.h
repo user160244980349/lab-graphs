@@ -8,7 +8,6 @@
 
 #include "Graph.h"
 #include <vector>
-#include <iostream>
 
 
 template <class T1, class T2>
@@ -18,28 +17,33 @@ template <class T1, class T2>
 class Iterator {
 public:
     typename Graph<T1, T2>::point* point;
-    T1 pointWeight;
-    T2 lineWeight;
 
+    explicit Iterator();
     explicit Iterator(typename Graph<T1, T2>::point* p);
-    void move(int id);
+    void next(int id);
+    bool operator==(Iterator<T1, T2> it);
 };
 
 template<class T1, class T2>
-void Iterator<T1, T2>::move(int id) {
-    if (point->lines[id].point != nullptr) {
-        lineWeight = point->lines[id].data;
+void Iterator<T1, T2>::next(int id) {
+    if (point->lines.size() > id) {
         point = point->lines[id].point;
-        pointWeight = point->data;
-    } else
-        std::cout << "Point is undefined" << std::endl;
+    };
+}
+
+template<class T1, class T2>
+Iterator<T1, T2>::Iterator() {
+    point = nullptr;
 }
 
 template<class T1, class T2>
 Iterator<T1, T2>::Iterator(typename Graph<T1, T2>::point *p) {
     point = p;
-    pointWeight = point->data;
-    lineWeight = 0;
+}
+
+template<class T1, class T2>
+bool Iterator<T1, T2>::operator==(Iterator<T1, T2> it) {
+    return point->id == it.point->id;
 }
 
 
