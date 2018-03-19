@@ -35,7 +35,7 @@ int main() {
 
     aStar(start, finish);
 
-    system("pause");
+//    system("pause");
 
     return 0;
 }
