@@ -34,7 +34,6 @@ public:
 template<class T1, class T2>
 Graph<T1, T2>::Graph(std::vector<typename Graph<T1, T2>::point> p) {
     points = p;
-
 }
 
 template<class T1, class T2>

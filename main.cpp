@@ -15,7 +15,7 @@ int main() {
 
     points.emplace_back(Graph<PointData, int>::point({0,0,0}));
     points.emplace_back(Graph<PointData, int>::point({10,0,0}));
-    points.emplace_back(Graph<PointData, int>::point({19,0,0}));
+    points.emplace_back(Graph<PointData, int>::point({9,0,0}));
     points.emplace_back(Graph<PointData, int>::point({6,0,0}));
     points.emplace_back(Graph<PointData, int>::point({7,0,0}));
     points.emplace_back(Graph<PointData, int>::point({0,0,0}));
@@ -32,10 +32,7 @@ int main() {
 
     Graph<PointData, int>::iterator start = graph.getIterator(0);
     Graph<PointData, int>::iterator finish = graph.getIterator(5);
-
     aStar(start, finish);
-
-//    system("pause");
 
     return 0;
 }
@@ -80,16 +77,15 @@ void aStar(Graph<PointData, int>::iterator start, Graph<PointData, int>::iterato
         closedPoints.emplace_back(parent);
         openedPoints.remove(parent);
 
-        for (int i = 0; i < closedPoints.back().point->lines.size(); i++) {
-            Graph<PointData, int>::iterator child = closedPoints.back();
+        for (int i = 0; i < parent.point->lines.size(); i++) {
+            Graph<PointData, int>::iterator child = parent;
             child.next(i);
 
             auto uIterator = std::find(closedPoints.begin(), closedPoints.end(), child);
             auto qIterator = std::find(openedPoints.begin(), openedPoints.end(), child);
 
-            child.point->data.wayWeight = parent.point->data.wayWeight + parent.point->lines[i].data;
-
             if (uIterator == closedPoints.end()) {
+                child.point->data.wayWeight = parent.point->data.wayWeight + parent.point->lines[i].data;
                 child.point->data.heuristic = child.point->data.wayWeight + child.point->data.weight;
                 std::cout << "checking at " << child.point->id << " and heuristic is " << child.point->data.heuristic << std::endl;
 
