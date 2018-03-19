@@ -11,10 +11,30 @@ void formic(Graph<PointData, int>::iterator start, Graph<PointData, int>::iterat
 
 int main() {
 
-    Graph<PointData, int> graph;
+    std::vector<typename Graph<PointData, int>::point> points;
+
+    points.emplace_back(Graph<PointData, int>::point({0,0,0}));
+    points.emplace_back(Graph<PointData, int>::point({10,0,0}));
+    points.emplace_back(Graph<PointData, int>::point({19,0,0}));
+    points.emplace_back(Graph<PointData, int>::point({6,0,0}));
+    points.emplace_back(Graph<PointData, int>::point({7,0,0}));
+    points.emplace_back(Graph<PointData, int>::point({0,0,0}));
+
+    points[0].lines.emplace_back(Graph<PointData, int>::line(5, &points[1]));
+    points[0].lines.emplace_back(Graph<PointData, int>::line(2, &points[2]));
+    points[1].lines.emplace_back(Graph<PointData, int>::line(10, &points[5]));
+    points[2].lines.emplace_back(Graph<PointData, int>::line(3, &points[3]));
+    points[2].lines.emplace_back(Graph<PointData, int>::line(2, &points[4]));
+    points[3].lines.emplace_back(Graph<PointData, int>::line(4, &points[5]));
+    points[4].lines.emplace_back(Graph<PointData, int>::line(9, &points[5]));
+
+    Graph<PointData, int> graph = points;
+
     Graph<PointData, int>::iterator start = graph.getIterator(0);
     Graph<PointData, int>::iterator finish = graph.getIterator(5);
+
     aStar(start, finish);
+
     system("pause");
 
     return 0;

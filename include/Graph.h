@@ -27,26 +27,14 @@ public:
 
     std::vector<Graph<T1, T2>::point> points;
 
-    Graph();
+    Graph(std::vector<typename Graph<T1, T2>::point> p);
     Graph<T1, T2>::iterator getIterator(int id);
 };
 
 template<class T1, class T2>
-Graph<T1, T2>::Graph() {
-    points.emplace_back(Graph<T1, T2>::point({0,0,0}));
-    points.emplace_back(Graph<T1, T2>::point({10,0,0}));
-    points.emplace_back(Graph<T1, T2>::point({19,0,0}));
-    points.emplace_back(Graph<T1, T2>::point({6,0,0}));
-    points.emplace_back(Graph<T1, T2>::point({7,0,0}));
-    points.emplace_back(Graph<T1, T2>::point({0,0,0}));
+Graph<T1, T2>::Graph(std::vector<typename Graph<T1, T2>::point> p) {
+    points = p;
 
-    points[0].lines.emplace_back(Graph<T1, T2>::line(5, &points[1]));
-    points[0].lines.emplace_back(Graph<T1, T2>::line(2, &points[2]));
-    points[1].lines.emplace_back(Graph<T1, T2>::line(10, &points[5]));
-    points[2].lines.emplace_back(Graph<T1, T2>::line(3, &points[3]));
-    points[2].lines.emplace_back(Graph<T1, T2>::line(2, &points[4]));
-    points[3].lines.emplace_back(Graph<T1, T2>::line(4, &points[5]));
-    points[4].lines.emplace_back(Graph<T1, T2>::line(9, &points[5]));
 }
 
 template<class T1, class T2>
