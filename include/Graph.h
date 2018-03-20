@@ -27,7 +27,7 @@ public:
 
     std::vector<Graph<T1, T2>::point> points;
 
-    Graph(std::vector<typename Graph<T1, T2>::point> p);
+    explicit Graph(std::vector<typename Graph<T1, T2>::point> p);
     Graph<T1, T2>::iterator getIterator(int id);
 };
 
