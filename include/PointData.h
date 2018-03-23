@@ -7,9 +7,9 @@
 
 
 struct PointData {
-    int weight;
-    int wayWeight;
-    int heuristic;
+    double weight;
+    double wayWeight;
+    double heuristic;
 };
 
 

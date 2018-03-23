@@ -23,11 +23,19 @@ public:
     std::vector<typename Graph<T1, T2>::line> lines;
 
     explicit Point(T1 d);
+    Point(T1 d, std::vector<typename Graph<T1, T2>::line> l);
 };
 
 template<class T1, class T2>
 Point<T1, T2>::Point(T1 d) {
     data = d;
+    id = count++;
+}
+
+template<class T1, class T2>
+Point<T1, T2>::Point(T1 d, std::vector<typename Graph<T1, T2>::line> l) {
+    data = d;
+    lines = l;
     id = count++;
 }
 

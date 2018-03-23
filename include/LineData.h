@@ -7,8 +7,8 @@
 
 
 struct LineData {
-    int weight;
-    int pheromone;
+    double weight;
+    double pheromone;
 };
 
 
