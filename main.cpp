@@ -18,7 +18,7 @@ int main() {
     });
 
     points[0].lines.emplace_back(Graph<PointData, LineData>::line({10, 1}, &points[1]));
-    points[0].lines.emplace_back(Graph<PointData, LineData>::line({1, 1}, &points[2]));
+    points[0].lines.emplace_back(Graph<PointData, LineData>::line({20, 1}, &points[2]));
     points[1].lines.emplace_back(Graph<PointData, LineData>::line({5, 1}, &points[5]));
     points[2].lines.emplace_back(Graph<PointData, LineData>::line({5, 1}, &points[3]));
     points[2].lines.emplace_back(Graph<PointData, LineData>::line({5, 1}, &points[4]));

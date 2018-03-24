@@ -38,7 +38,7 @@ Graph<T1, T2>::Graph(std::vector<typename Graph<T1, T2>::point> p) {
 
 template<class T1, class T2>
 typename Graph<T1, T2>::iterator Graph<T1, T2>::getIterator(int id) {
-    return Graph<T1, T2>::iterator(&points[id]);
+    return Graph<T1, T2>::iterator(&points[id], &points);
 }
 
 

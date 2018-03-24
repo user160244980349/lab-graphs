@@ -17,9 +17,10 @@ template <class T1, class T2>
 class Iterator {
 public:
     typename Graph<T1, T2>::point* point;
+    typename std::vector<typename Graph<T1, T2>::point>* points;
 
     explicit Iterator();
-    explicit Iterator(typename Graph<T1, T2>::point* p);
+    explicit Iterator(typename Graph<T1, T2>::point* p, typename std::vector<typename Graph<T1, T2>::point>* ps);
     void next(int id);
     bool operator==(Iterator<T1, T2> it);
 };
@@ -34,11 +35,13 @@ void Iterator<T1, T2>::next(int id) {
 template<class T1, class T2>
 Iterator<T1, T2>::Iterator() {
     point = nullptr;
+    points = nullptr;
 }
 
 template<class T1, class T2>
-Iterator<T1, T2>::Iterator(typename Graph<T1, T2>::point *p) {
+Iterator<T1, T2>::Iterator(typename Graph<T1, T2>::point *p, typename std::vector<typename Graph<T1, T2>::point>* ps) {
     point = p;
+    points = ps;
 }
 
 template<class T1, class T2>
