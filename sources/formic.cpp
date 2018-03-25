@@ -15,7 +15,7 @@ void formic(Graph<PointData, LineData>::iterator start, Graph<PointData, LineDat
     double alpha = 0.8; // влияние расстояния
     double beta = 0.5; // влияние феромона
     double pheromone = 1; // начальное количество феромона на ребрах
-    double evaporation = 0.001; // начальное количество феромона на ребрах
+    double evaporation = 0.005; // начальное количество феромона на ребрах
 
     std::mt19937 gen(static_cast<unsigned int>(time(nullptr)));
     std::uniform_real_distribution<double> distribution(0, 1);
@@ -72,6 +72,7 @@ void formic(Graph<PointData, LineData>::iterator start, Graph<PointData, LineDat
 
     std::cout << "Best way is: ";
     Graph<PointData, LineData>::iterator it = start;
+    int range = 0;
     while (true) {
 
         std::cout << it.point->id;
@@ -84,12 +85,12 @@ void formic(Graph<PointData, LineData>::iterator start, Graph<PointData, LineDat
         int next = 0;
         for (int point = 0; point < it.point->lines.size(); point++) {
 
-            it.point->lines[1].data.pheromone;
             if (it.point->lines[next].data.pheromone < it.point->lines[point].data.pheromone)
                 next = point;
 
         }
+        range += it.point->lines[next].data.weight;
         it.next(next);
     }
-    std::cout << std::endl;
+    std::cout << " with range " << range << std::endl << std::endl;
 }

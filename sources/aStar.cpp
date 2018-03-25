@@ -28,7 +28,7 @@ void aStar(Graph<PointData, LineData>::iterator start, Graph<PointData, LineData
                 parent = p;
 
         if (parent == finish) {
-            std::cout << "way found! Total range is " << parent.point->data.wayWeight << std::endl;
+            std::cout << "way found!" << std::endl << std::endl;
             return;
         }
 
@@ -42,7 +42,7 @@ void aStar(Graph<PointData, LineData>::iterator start, Graph<PointData, LineData
             std::cout << p.point->id << " ";
         std::cout << "]" << std::endl;
 
-        std::cout << "standing at " << parent.point->id << std::endl;
+        std::cout << "standing at " << parent.point->id << " range is " << parent.point->data.wayWeight << std::endl;
 
         closedPoints.emplace_back(parent);
         openedPoints.remove(parent);
@@ -59,8 +59,9 @@ void aStar(Graph<PointData, LineData>::iterator start, Graph<PointData, LineData
                 child.point->data.heuristic = child.point->data.wayWeight + child.point->data.weight;
                 std::cout << "checking at " << child.point->id << " and heuristic is " << child.point->data.heuristic << std::endl;
 
-                if (qIterator == openedPoints.end())
+                if (qIterator == openedPoints.end()) {
                     openedPoints.emplace_back(child);
+                }
             }
         }
         std::cout << std::endl;
